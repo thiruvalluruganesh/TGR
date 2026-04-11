@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Hanvika's Magical Story ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Dancing+Script:wght@700&family=Pacifico&family=Fredoka:wght@400;700&family=Great+Vibes&family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <style>
         :root {
             --neon: #ff85a1;
@@ -12,6 +12,8 @@
             --glass: rgba(255, 255, 255, 0.88);
             --accent: #f72585;
             --shadow: rgba(247, 37, 133, 0.3);
+            /* New Gradient Colors */
+            --grad-text: linear-gradient(45deg, #f72585, #7209b7);
         }
 
         @keyframes bgGradient {
@@ -35,7 +37,7 @@
         
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: 'Poppins', sans-serif; overflow: hidden;
+            font-family: 'Fredoka', sans-serif; overflow: hidden;
             background: linear-gradient(-45deg, #ffe5ec, #ffc2d1, #fbb1bd, #ff99ac);
             background-size: 400% 400%;
             animation: bgGradient 12s ease infinite;
@@ -83,10 +85,14 @@
 
         .slide {
             position: absolute; width: 250px; height: 340px;
-            background: white; padding: 12px 12px 55px 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-            border-radius: 10px; transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            /* CHANGE 1: Frame background changed to a variable, updated padding */
+            background: var(--frame-color, white); 
+            padding: 15px 15px 60px 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 10px; 
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
             opacity: 0; pointer-events: none; transform: translateZ(-200px);
+            border: 2px solid white; /* Adds a nice inner edge */
         }
 
         .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
@@ -97,7 +103,11 @@
 
         .slide .caption {
             position: absolute; bottom: 15px; left: 0; width: 100%;
-            font-family: 'Dancing Script'; font-size: 22px; color: var(--accent); font-weight: bold;
+            font-family: 'Great Vibes', cursive; font-size: 26px; 
+            /* CHANGE 2: Caption color adjusted to be readable on dark frames */
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            font-weight: bold;
         }
 
         /* Magic UI */
@@ -110,31 +120,53 @@
         }
 
         .btn {
-            background: linear-gradient(45deg, var(--accent), #ff4d6d); color: white; border: none;
+            background: linear-gradient(45deg, #f72585, #4cc9f0); color: white; border: none;
             padding: 14px 35px; border-radius: 50px; font-weight: 800;
-            letter-spacing: 1px; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 12px 24px var(--shadow); text-transform: uppercase; font-size: 14px;
+            letter-spacing: 1px; cursor: pointer; transition: 0.3s; font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 8px 15px var(--shadow); text-transform: uppercase; font-size: 14px;
         }
 
         .btn:active { transform: scale(0.92); }
 
-        .neon-text { font-family: 'Pacifico', cursive; color: var(--accent); font-size: 34px; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        /* Stylish Colorful Titles */
+        .neon-text { 
+            font-family: 'Bubblegum Sans', cursive; 
+            background: linear-gradient(to right, #ff007f, #7209b7, #4cc9f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 38px; 
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
+            margin-bottom: 10px;
+        }
 
         .typing-box {
-            font-size: 16px; font-weight: 600; line-height: 1.8;
-            color: #444; background: rgba(255,255,255,0.6);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 17px; font-weight: 600; line-height: 1.6;
+            color: #5b2c6f; background: rgba(255,255,255,0.7);
             padding: 25px; border-radius: 25px; margin: 20px 10px;
-            border: 1px solid white; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            border: 2px dashed var(--secondary); box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .chip { 
-            padding: 10px 20px; border-radius: 25px; border: 2px solid var(--neon);
-            margin: 6px; display: inline-block; font-size: 14px; font-weight: bold;
-            color: #f72585; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 10px 22px; border-radius: 25px; 
+            border: 2px solid #7209b7;
+            margin: 6px; display: inline-block; font-size: 15px; font-weight: bold;
+            font-family: 'Bubblegum Sans', cursive;
+            background: linear-gradient(45deg, #fff, #fde9ff);
+            color: #7209b7; box-shadow: 0 4px 10px rgba(114, 9, 183, 0.2);
         }
 
         .tgr-footer { position: absolute; bottom: 15px; width: 100%; font-size: 11px; letter-spacing: 2px; color: #888; text-transform: uppercase; }
-        .tgr-name { font-weight: 900; background: linear-gradient(45deg, #f72585, #ff4d6d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tgr-name { font-weight: 900; background: linear-gradient(45deg, #f72585, #480ca8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .birthday-sub {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px !important;
+            background: linear-gradient(45deg, #f72585, #b5179e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -145,10 +177,10 @@
     <div id="lock">
         <div class="lock-card">
             <h2 class="neon-text">SURPRISE FOR HANVI 🎀</h2>
-            <p style="color: #666; font-weight: 600;">Unlock the magic inside...</p>
-            <input type="text" id="pass" placeholder="🎀cute little princess🎀" style="padding: 15px; border-radius: 25px; border: 2px solid var(--secondary); text-align: center; outline: none; width: 80%; font-size: 16px;">
+            <p style="color: #666; font-weight: 600; font-family: 'Fredoka';">Unlock the magic inside...</p>
+            <input type="text" id="pass" placeholder="🎀cute little princess🎀" style="padding: 15px; border-radius: 25px; border: 2px solid var(--secondary); text-align: center; outline: none; width: 80%; font-size: 16px; font-family: 'Fredoka';">
             <br><br>
-            <button class="btn" onclick="unlock()">Open✨open✨</button>
+            <button class="btn" onclick="unlock()">Open ✨ Magic</button>
         </div>
     </div>
 
@@ -158,17 +190,17 @@
         <div id="s1" class="section" style="display: flex; flex-direction: column; justify-content: center;">
             <div style="font-size: 70px; animation: float 4s infinite;">🎁</div>
             <h2 class="neon-text">Happy Birthday!</h2>
-            <p style="font-weight: 800; color: #ff4d6d; font-size: 22px; letter-spacing: 1px;">🎀 HANVIKA REDDY 🎀</p>
+            <p class="birthday-sub">Hanvika Reddy</p>
         </div>
 
         <div id="s2" class="section">
-            <h3 style="color: var(--accent); font-family: 'Pacifico';">Sweet Note</h3>
+            <h3 style="background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Pacifico'; font-size: 28px;">Sweet Note</h3>
             <div class="typing-box" id="typing"></div>
         </div>
 
         <div id="s3" class="section">
             <div id="ballView">
-                <p style="color:#ff4d6d; font-weight: 800; margin-top: 50px;">Tap the Magic Ball to reveal your memories</p>
+                <p style="color:#f72585; font-family: 'Bubblegum Sans'; font-size: 20px; margin-top: 50px;">Tap the Magic Ball to reveal your memories</p>
                 <div id="magicBall" onclick="startSlides()">🔮</div>
             </div>
             <div id="sliderView" style="display:none; height: 100%;">
@@ -204,9 +236,9 @@
                     <div class="slide"><img src="30.jpeg"><div class="caption">Love You!</div></div>
                     <div class="slide"><img src="WhatsApp Image 2026-04-11 at 6.08.44 PM.jpeg"><div class="caption">Birthday Bash! 🎉</div></div>
                 </div> 
-                <div id="counter" style="color: var(--accent); font-weight: 800; font-size: 18px;">1 / 30</div>
+                <div id="counter" style="color: var(--accent); font-family: 'Fredoka'; font-weight: 700; font-size: 18px;">1 / 30</div>
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" style="background: #ffb7c5; box-shadow: none;" onclick="prevSlide()">Back</button>
+                    <button class="btn" style="background: #ffb7c5; box-shadow: none; color: #f72585;" onclick="prevSlide()">Back</button>
                     <button class="btn" onclick="nextSlide()">Next</button>
                 </div>
             </div>
@@ -215,7 +247,7 @@
         <div id="s4" class="section">
             <h2 class="neon-text">Hearty Wishes By</h2>
             <div id="wisherBox" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 20px;"></div>
-            <p style="margin-top: 40px; font-weight: 800; color: #555;">You are loved by everyone! ❤️</p>
+            <p style="margin-top: 40px; font-family: 'Fredoka'; font-weight: 700; color: #555;">You are loved by everyone! ❤️</p>
             <div class="tgr-footer">designed by <span class="tgr-name">TGR</span></div>
         </div>
 
@@ -225,12 +257,19 @@
     </div>
 
     <script>
+        // Existing logic preserved 100%
         const MSG = "Hanvika, you are our little princess! 💝 May your world always be filled with sparkles and stardust, and may your happy heart always stay full of joy. Keep shining like the little star you are! 💖🌟 Happy Birthday!";
         const WISHERS = ["Ganesh", "Kanchana", "Mom & Dad", "Family Members"];
         const CODES = ["HANVI", "HANVIKA", "PRINCESS", ""]; 
         
         let step = 1; let slideIdx = 0;
         const totalSlides = 30;
+
+        // CHANGE 3: Define a set of vibrant colors for frames
+        const FRAME_COLORS = [
+            "#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff",
+            "#f72585", "#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ffb7c5", "#ff85a1", "#ff4d6d"
+        ];
 
         function unlock() {
             const val = document.getElementById("pass").value.toUpperCase();
@@ -280,13 +319,25 @@
             updateSlide();
         }
 
+        // CHANGE 4: Small function to get a random color
+        function getRandomColor() {
+            return FRAME_COLORS[Math.floor(Math.random() * FRAME_COLORS.length)];
+        }
+
         function updateSlide() {
             const slides = document.querySelectorAll('.slide');
             slides.forEach((s, i) => {
                 s.className = 'slide';
-                if (i === slideIdx) s.classList.add('active');
+                if (i === slideIdx) {
+                    s.classList.add('active');
+                    // CHANGE 5: Apply a random color only to the ACTIVE frame
+                    s.style.setProperty('--frame-color', getRandomColor());
+                }
                 else if (i === slideIdx - 1) s.classList.add('prev');
                 else if (i === slideIdx + 1) s.classList.add('next');
+                
+                // Clear background of non-active slides to maintain performance and view
+                if(i !== slideIdx) s.style.removeProperty('--frame-color');
             });
             document.getElementById('counter').innerText = `${slideIdx + 1} / ${totalSlides}`;
         }
@@ -309,7 +360,6 @@
             } 
         }
 
-        // Particles & Bubble Physics
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -362,4 +412,4 @@
         });
     </script>
 </body>
-                                                                                                       </html>
+                        </html>
