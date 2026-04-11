@@ -118,7 +118,7 @@
 
         .btn:active { transform: scale(0.92); }
 
-jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--accent); font-size: 34px; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        .neon-text { font-family: 'Pacifico', cursive; color: var(--accent); font-size: 34px; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
 
         .typing-box {
             font-size: 16px; font-weight: 600; line-height: 1.8;
@@ -230,6 +230,7 @@ jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--acc
         const CODES = ["HANVI", "HANVIKA", "PRINCESS", ""]; 
         
         let step = 1; let slideIdx = 0;
+        const totalSlides = 30;
 
         function unlock() {
             const val = document.getElementById("pass").value.toUpperCase();
@@ -287,15 +288,26 @@ jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--acc
                 else if (i === slideIdx - 1) s.classList.add('prev');
                 else if (i === slideIdx + 1) s.classList.add('next');
             });
-            document.getElementById('counter').innerText = `${slideIdx + 1} / 30`;
+            document.getElementById('counter').innerText = `${slideIdx + 1} / ${totalSlides}`;
         }
 
         function nextSlide() {
-            if(slideIdx < 29) { slideIdx++; updateSlide(); }
-            else { document.getElementById("bottomNav").style.display = "flex"; nextStep(); }
+            if(slideIdx < (totalSlides - 1)) { 
+                slideIdx++; 
+                updateSlide(); 
+            }
+            else { 
+                document.getElementById("bottomNav").style.display = "flex"; 
+                nextStep(); 
+            }
         }
 
-        function prevSlide() { if(slideIdx > 0) { slideIdx--; updateSlide(); } }
+        function prevSlide() { 
+            if(slideIdx > 0) { 
+                slideIdx--; 
+                updateSlide(); 
+            } 
+        }
 
         // Particles & Bubble Physics
         const canvas = document.getElementById('bg-canvas');
@@ -304,6 +316,7 @@ jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--acc
         let pts = [];
 
         function init() {
+            pts = [];
             for(let i=0; i<30; i++) {
                 pts.push({
                     x: Math.random() * canvas.width,
@@ -332,7 +345,8 @@ jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--acc
         function createBubble() {
             const b = document.createElement('div');
             b.className = 'bubble';
-            const size = Math.random() * 45 + 15 + 'px';
+            const sizeValue = Math.random() * 45 + 15;
+            const size = sizeValue + 'px';
             b.style.width = size; b.style.height = size;
             b.style.left = Math.random() * 100 + 'vw';
             b.style.bottom = "-60px";
@@ -344,7 +358,8 @@ jpeg"></div>     .neon-text { font-family: 'Pacifico', cursive; color: var(--acc
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            init();
         });
     </script>
 </body>
-</html>
+                                                                                                       </html>
